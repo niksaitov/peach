@@ -1,0 +1,42 @@
+body{
+    background-color: #1a1a1a;
+}
+input{
+    color: #9a9a9a !important
+}
+textarea{
+    color: #9a9a9a !important;
+    resize: none;
+}
+.text-light-grey{
+    color: #9a9a9a
+}
+.boarder-dark-grey{
+    border: 6px solid #343a40 
+}
+.alert {
+    border-radius: 0;
+}
+.dark-success {
+    background-color: #28a745;
+    border-color: #28a745; 
+    color: #fff;
+}
+.dark-error {
+    background-color: #ff5733;
+    border-color: #ff5733;
+    color: #fff;
+}
+.corner-right-image {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.corner-left-image {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+ 
+ 

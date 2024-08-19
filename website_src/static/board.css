@@ -1,0 +1,24 @@
+.square{
+    width: 75px;
+    height: 75px;
+    font-size: 60px;
+    text-align: center;
+    user-select: none;
+    position: relative;
+}
+.square-light{
+    background-color: #fbebb2
+}
+.square-dark{
+    background-color: #ccbc7d
+}
+.piece{
+    top: -12.5%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    cursor: move;
+    user-select: none;
+    position: absolute;
+    font-family: 'Segoe UI Symbol', sans-serif;
+}

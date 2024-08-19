@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% block head %}
+<link rel="stylesheet" href="static/board.css">
+<title>Board</title>
+{% endblock %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row" style="margin-top: 30px">
+        <div class="col-2 text-light-grey" style="font-size: x-large">
+            <div class="container">
+                <div class="mb-2">Import FEN</div>
+                <textarea 
+                    class="form-control bg-dark border-0 mb-3" 
+                    id="fenInput" 
+                    type="text" 
+                    placeholder="Enter FEN string here"
+                ></textarea>
+                <button 
+                    class="btn btn-primary btn-block mb-3" 
+                    id="importFENbtn" 
+                    onclick="setBoardFromUserFEN()"
+                >Set Board</button>
+                <div class="mb-2">Export FEN</div>
+                <textarea 
+                    class="form-control bg-dark border-0 mb-3" 
+                    id="fenOutput" 
+                    type="text" 
+                    placeholder="FEN will be displayed here"
+                    readonly
+                ></textarea>
+                <button 
+                    class="btn btn-primary btn-block mb-3" 
+                    id="exportFENbtn" 
+                    onclick="getFENfromBoard()"
+                >Get FEN</button>
+                <div class="mb-2">Leave Feedback</div>
+                <textarea 
+                    class="form-control bg-dark border-0 mb-3" 
+                    id="feedbackOutput" 
+                    type="text" 
+                    placeholder="Write any feedback here"
+                ></textarea>
+                <button 
+                    class="btn btn-primary btn-block mb-3" 
+                    id="sendFeedbackBtn" 
+                    onclick="sendEmailAdmin()"
+                >Send</button>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="d-flex justify-content-center align-items-center">
+                <table>
+                    {% for rank in range(8) %}
+                        <tr>
+                            {% for file in range(8) %}
+                                {% if file == 0 %}
+                                    <td 
+                                        class="text-light-grey" 
+                                        style="font-size: large; padding-right: 10px"
+                                    >{{ 8-rank }}</td>
+                                {% endif%}
+                                {% with squareIndex = rank * 8 + file %}
+                                    {% if (rank + file) % 2 == 0 %}
+                                        <td class="square square-light " id="{{ squareIndex }}"></td>
+                                    {% else %}
+                                        <td class="square square-dark" id="{{ squareIndex }}"></td>
+                                    {% endif %}
+                                {% endwith %}
+                        {% endfor %}
+                        </tr>
+                    {% endfor %}
+                    <tr>
+                        <td></td>
+                        {% for file in range(8) %}
+                            <td
+                                class="text-light-grey" 
+                                style="font-size: large; text-align: center; padding-top: 5px"
+                            >&#{{ file + 97 }}</td>
+                        {% endfor%}
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="col-4 text-light-grey" style="font-size: x-large">
+            <div class="container">
+                <div>Evaluation: *placeholder*</div> 
+                <br />
+                <div>Best Move: *placeholder*</div> 
+                <br />
+                <div class="mb-2">Principled Variation</div>
+                <textarea 
+                    class="form-control bg-dark border-0 mb-3" 
+                    id="pvOutput" 
+                    type="text" 
+                    placeholder="Best moves for both players will be displayed here"
+                    readonly
+                ></textarea>
+                <div class="mb-2">Moves played</div>
+                <textarea 
+                    class="form-control bg-dark border-0 mb-3" 
+                    id="pgnOutput" 
+                    type="text" 
+                    placeholder="Moves will be displayed here"
+                    style="padding-bottom: 70px;"
+                    readonly
+                ></textarea>
+                <button 
+                    class="btn btn-success btn-block mb-2" 
+                    id="analyseBtn" 
+                >Analyse</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="static/fen.js"></script>
+<script src="static/drag.js"></script>
+<script src="static/email.js"></script>
+{% endblock %}
