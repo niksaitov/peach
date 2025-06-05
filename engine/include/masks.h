@@ -3,6 +3,7 @@
 
 using U64 = unsigned long long;
 
+
 //Mask the pawn attacks for a given square and color
 U64 maskPawnAttacks(int squareIndex, int sideToMove);
 
@@ -20,5 +21,6 @@ U64 maskKingAttacks(int squareIndex);
 
 //Generate a custom file-rank mask
 U64 generateMask(int file, int rank);
+
 
 #endif

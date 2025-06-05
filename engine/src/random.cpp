@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cstdlib>
-#include "random.h"
+#include "../include/random.h"
 
 
 //Create a seed for the random numbers using the current time

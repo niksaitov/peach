@@ -1,5 +1,6 @@
 using U64 = unsigned long long;
 
+
 class AttackTable{
     
     private:

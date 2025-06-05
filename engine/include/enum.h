@@ -1,6 +1,7 @@
 #ifndef ENUM_H
 #define ENUM_H
 
+
 //Convert a square into the squareIndex
 enum {
     a8, b8, c8, d8, e8, f8, g8, h8,
@@ -45,5 +46,6 @@ enum {white, black, both};
 
 //Enumerate castling rights
 enum {K=1, Q=2, k=4, q=8};
+
 
 #endif

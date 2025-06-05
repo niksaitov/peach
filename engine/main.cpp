@@ -3,17 +3,18 @@
 #include <cstring>
 #include <chrono>
 #include <vector>
-#include "const.h"    
-#include "enum.h"
-#include "bitboard_operations.h"
-#include "magic_numbers.h"
-#include "masks.h"
-#include "engine_exceptions.h"
-#include "AttackTable.h"
-#include "random.h"
-#include "move_encoding.h"
-#include "MoveList.h"
-#include "TranspositionNode.h"
+
+#include "include/const.h"    
+#include "include/enum.h"
+#include "include/bitboard_operations.h"
+#include "include/magic_numbers.h"
+#include "include/masks.h"
+#include "include/engine_exceptions.h"
+#include "include/AttackTable.h"
+#include "include/random.h"
+#include "include/move_encoding.h"
+#include "include/MoveList.h"
+#include "include/TranspositionNode.h"
 
 
 using U64 = unsigned long long;

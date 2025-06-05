@@ -66,5 +66,6 @@ inline void printMove(int move){
 
 }
 
+
 #endif
 

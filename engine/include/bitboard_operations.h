@@ -6,6 +6,7 @@
 
 using U64 = unsigned long long;
 
+
 //Set a bit at the given square index on the given bitboard
 inline void setBit(U64& bitboard, int squareIndex){
     bitboard |= (1ULL << squareIndex);
@@ -83,5 +84,6 @@ inline void printBitboard(const U64& bitboard){
     std::cout << '\n' << "Decimal representation: " << bitboard << '\n';
 
 }
+
 
 #endif

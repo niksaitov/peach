@@ -1,8 +1,10 @@
-#include "masks.h"
-#include "bitboard_operations.h"
-#include "const.h"
+#include "../include/masks.h"
+#include "../include/bitboard_operations.h"
+#include "../include/const.h"
+
 
 enum {white, black, both};
+
 
 //Mask the pawn attacks for a given square and color
 U64 maskPawnAttacks(int squareIndex, int colour){

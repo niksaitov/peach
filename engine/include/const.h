@@ -6,6 +6,7 @@
 
 using U64 = unsigned long long;
 
+
 //Masking constants
 const U64 NOT_A_FILE = 18374403900871474942ULL;
 const U64 NOT_AB_FILE = 18229723555195321596ULL;
@@ -278,5 +279,6 @@ const int fPV_HASH = 0;
 const int fALPHA_HASH = 1;
 const int fBETA_HASH = 2;
 const int fHASH_NOT_FOUND = -100000;
+
 
 #endif

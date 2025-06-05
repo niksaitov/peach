@@ -1,10 +1,11 @@
 #include <cstring>
-#include "magic_numbers.h"
-#include "bitboard_operations.h"
-#include "engine_exceptions.h"
-#include "masks.h"
-#include "random.h"
-#include "const.h"
+#include "../include/magic_numbers.h"
+#include "../include/bitboard_operations.h"
+#include "../include/engine_exceptions.h"
+#include "../include/masks.h"
+#include "../include/random.h"
+#include "../include/const.h"
+
 
 //Dynamically generate bishop attack mask for a given occupancy and the square index
 U64 generateBishopAttacks(int squareIndex, const U64& occupancy){
@@ -151,7 +152,6 @@ U64 getOccupancyFromIndex(int occupancyIndex, int relevantBits, U64 attackMask){
 
         //Pop the LS1B from the bitboard
         popBit(attackMask, squareIndex);
-
         //If the occupancy index includes the current bit
         if(occupancyIndex & (1 << currentBit)){
             //Set the bit on the occupancy bitboard

@@ -1,5 +1,5 @@
-#include "MoveList.h"
-#include "move_encoding.h"
+#include "../include/MoveList.h"
+#include "../include/move_encoding.h"
 
 
 //Add move to the moves array at index specified by the count member variable

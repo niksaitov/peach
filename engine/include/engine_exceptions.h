@@ -3,6 +3,7 @@
 
 #include <exception>
 
+
 //Create a custon exception inheriting from the standart exception class
 class HashKeysNotInitialisedException : public std::exception{
     
@@ -28,5 +29,6 @@ class MagicNumberNotInitialisedException : public std::exception{
         const char* what(); 
         
 };
+
 
 #endif
