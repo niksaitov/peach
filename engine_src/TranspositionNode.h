@@ -1,6 +1,5 @@
 using U64 = unsigned long long;
 
-extern "C" {
 
     struct TranspositionNode{
 
@@ -10,4 +9,3 @@ extern "C" {
         int score = 0;
 
     };
-}
