@@ -15,19 +15,21 @@ def validate_input(string, size_lower, size_upper):
     return True
 
 def generate_salt(length):
-    print(os.urandom(length).hex())
     return os.urandom(length).hex()
 
 def hash_password(password):
-
     salt = generate_salt(16)
     salt_bytes = bytes.fromhex(salt)
     password_bytes = password.encode('utf-8')
-    hash = hashlib.sha256(salt_bytes + password_bytes)
-    return hash.hexdigest()
+    hash_hex = hashlib.sha256(salt_bytes + password_bytes).hexdigest()
+    return f"{salt}:{hash_hex}"
 
-def check_password_hash(password, correct_password_hash):
-    return hash_password(password) == correct_password_hash
+def check_password_hash(password, stored_hash):
+    salt, hash_hex = stored_hash.split(":", 1)
+    salt_bytes = bytes.fromhex(salt)
+    password_bytes = password.encode('utf-8')
+    computed = hashlib.sha256(salt_bytes + password_bytes).hexdigest()
+    return computed == hash_hex
 
 auth = Blueprint("auth", __name__)
 
@@ -42,7 +44,7 @@ def login():
         existing_user = User.query.filter_by(email=form_email).first()
 
         if existing_user:
-            if(hash_password(form_password) == existing_user.password):
+            if check_password_hash(form_password, existing_user.password):
                 flash("Login successful!", category="success")
                 login_user(existing_user, remember=True)
                 return redirect(url_for("view.home"))
