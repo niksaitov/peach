@@ -4,8 +4,7 @@
 #include <map>
 #include <iostream>
 
-using U64 = unsigned long long;
-
+#include "typedef.h"
 
 //Masking constants
 const U64 NOT_A_FILE = 18374403900871474942ULL;

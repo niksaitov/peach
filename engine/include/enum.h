@@ -1,7 +1,6 @@
 #ifndef ENUM_H
 #define ENUM_H
 
-
 //Convert a square into the squareIndex
 enum {
     a8, b8, c8, d8, e8, f8, g8, h8,
@@ -41,7 +40,7 @@ enum {opening, endgame, middlegame};
 //Enumerate piece types 
 enum {pawn, knight, bishop, rook, queen, king};
 
-//Enumerate colours
+//Enumerate colors
 enum {white, black, both};
 
 //Enumerate castling rights
