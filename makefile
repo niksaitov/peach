@@ -2,7 +2,6 @@
 
 all: website
 
-# Engine — real file target, no stamp needed
 engine/engine:
 	$(MAKE) -C engine
 
@@ -11,7 +10,7 @@ venv/.stamp:
 	python3 -m venv venv
 	touch $@
 
-# Deps install stamp — reruns if requirements.txt or the venv itself changes
+# Reruns if requirements.txt or the venv itself changes
 venv/.deps-stamp: requirements.txt venv/.stamp
 	venv/bin/pip install -r requirements.txt -q
 	touch $@
