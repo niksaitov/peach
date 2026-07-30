@@ -161,7 +161,7 @@ class Position {
             int leftArraySize = middleIndex - leftIndex + 1;
             int rightArraySize = rightIndex - middleIndex;
 
-            int leftArray[leftArraySize], rightArray[rightArraySize];
+            int leftArray[128], rightArray[128];
 
             for (int i = 0; i < leftArraySize; i++) {
                 leftArray[i] = moveArray[leftIndex + i];
