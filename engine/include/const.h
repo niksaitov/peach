@@ -272,7 +272,11 @@ const int REDUCTION_LIMIT = 3;
 
 const int ASPIRATION_WINDOW = 50;
 
-const int NUM_TT_ENTRIES = 0x800000;
+#ifdef WASM_BUILD
+const int NUM_TT_ENTRIES = 0x80000;  // 512K entries ~12MB for WASM
+#else
+const int NUM_TT_ENTRIES = 0x800000;  // 8M entries ~160MB for native
+#endif
 
 const int fPV_HASH = 0;
 const int fALPHA_HASH = 1;
