@@ -1,8 +1,9 @@
 CXX      = g++
 EMCC     = emcc
-INCLUDES = -Iinclude
-SRC_DIR  = src
-OBJ_DIR  = obj
+ENGINE_DIR = engine
+INCLUDES = -I$(ENGINE_DIR)/include
+SRC_DIR  = $(ENGINE_DIR)/src
+OBJ_DIR  = $(ENGINE_DIR)/obj
 
 CXXFLAGS   = -std=c++17 -Wall -Wextra -Werror -Ofast
 WASM_CFLAGS  = -std=c++17 -O2 -DWASM_BUILD
@@ -16,8 +17,10 @@ WASM_LDFLAGS = -std=c++17 -O2 \
                -sINITIAL_MEMORY=33554432 \
                -sALLOW_MEMORY_GROWTH=1
 
+MAIN_SRC    = $(ENGINE_DIR)/main.cpp
+
 ALL_SRC     = $(wildcard $(SRC_DIR)/*.cpp)
-NATIVE_SRC  = $(filter-out $(SRC_DIR)/wasm_api.cpp, $(ALL_SRC)) main.cpp
+NATIVE_SRC  = $(filter-out $(SRC_DIR)/wasm_api.cpp, $(ALL_SRC)) $(MAIN_SRC)
 NATIVE_OBJ  = $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, \
               $(filter $(SRC_DIR)/%.cpp, $(NATIVE_SRC))) \
               $(OBJ_DIR)/main.o
@@ -25,8 +28,8 @@ NATIVE_OBJ  = $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, \
 WASM_SRC    = $(ALL_SRC)
 WASM_OBJ    = $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/wasm/%.o, $(WASM_SRC))
 
-NATIVE_TARGET = main
-WASM_TARGET   = ../website/public/engine.js
+NATIVE_TARGET = $(ENGINE_DIR)/main
+WASM_TARGET   = website/public/engine.js
 
 .PHONY: all wasm clean
 
@@ -37,7 +40,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 	@mkdir -p $(OBJ_DIR)
 	$(CXX) $(CXXFLAGS) $(INCLUDES) -c $< -o $@
 
-$(OBJ_DIR)/main.o: main.cpp
+$(OBJ_DIR)/main.o: $(MAIN_SRC)
 	@mkdir -p $(OBJ_DIR)
 	$(CXX) $(CXXFLAGS) $(INCLUDES) -c $< -o $@
 
